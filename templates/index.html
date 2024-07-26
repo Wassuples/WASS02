@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Primary Monitor Stream</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Primary Monitor Stream</h1>
+        <div class="stream-container">
+            <img id="stream" src="{{ url_for('video_feed') }}"/>
+        </div>
+        <div class="controls">
+            <button id="startStopBtn">Stop Stream</button>
+            <div class="frame-rate-control">
+                <label for="frameRateSlider">FPS:</label>
+                <input type="range" id="frameRateSlider" min="1" max="60" value="10">
+                <input type="number" id="frameRateInput" min="1" max="60" value="10">
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Button -->
+    <div id="helpButton" class="help-button" onclick="toggleModal()">?</div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="help-modal">
+        <div class="help-modal-content">
+            <span class="close-button" onclick="toggleModal()">&times;</span>
+            <h2>Help & Information</h2>
+            <p>This web application streams your primary monitor screen. You can control the frame rate using the slider below the stream.</p>
+            <p><strong>Controls:</strong></p>
+            <ul>
+                <li><strong>Stop Stream:</strong> Click this button to stop the screen streaming.</li>
+                <li><strong>FPS Slider:</strong> Adjust the frame rate of the stream.</li>
+                <li><strong>?</ Button:</strong> Opens this help modal with information about the app.</li>
+            </ul>
+            <p>If you have any other questions, feel free to reach out to support.</p>
+        </div>
+    </div>
+
+    <!-- Dark Mode Toggle Button -->
+    <div class="theme-toggle">
+        <button id="darkModeToggle">Dark Mode</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
